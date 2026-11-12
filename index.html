@@ -1,0 +1,210 @@
+<!DOCTYPE html><html><head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/iptv-pro-web/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Standalone media player for your own authorized sources. No channels or subscriptions included.">
+  <meta name="iptv-public-profile" content="browser-only-v1">
+  <meta name="theme-color" content="#03050C">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="IPTV Pro">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <title>IPTV Pro</title>
+  <link rel="manifest" href="manifest.json">
+  <style id="splash-screen-style">
+    html {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      background-color: #03050C;
+          background-size: 100% 100%;
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .contain {
+      display:block;
+      width:100%; height:100%;
+      object-fit: contain;
+    }
+
+    .stretch {
+      display:block;
+      width:100%; height:100%;
+    }
+
+    .cover {
+      display:block;
+      width:100%; height:100%;
+      object-fit: cover;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      -ms-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
+
+    .bottomLeft {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottomRight {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    #web-startup-error {
+      box-sizing: border-box;
+      max-width: 640px;
+      margin: 10vh auto;
+      padding: 32px;
+      color: #f4f6fb;
+      font: 16px/1.6 system-ui, sans-serif;
+    }
+    #web-startup-error h1 { font-size: 26px; line-height: 1.25; }
+    #web-startup-error p { color: #b8c3d6; }
+    #web-startup-error code {
+      display: block;
+      padding: 16px;
+      border: 1px solid #364155;
+      border-radius: 12px;
+      background: #151c29;
+      overflow-wrap: anywhere;
+    }
+    #web-startup-error a { color: #70c8ff; }
+    #startup-legal {
+      position: absolute;
+      bottom: 16px;
+      width: 100%;
+      text-align: center;
+      font: 16px/1.6 system-ui, sans-serif;
+    }
+    #startup-legal a { color: #70c8ff; }
+    #startup-legal a:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
+  </style>
+  <script id="splash-screen-script">
+    function removeSplashFromWeb() {
+      document.getElementById("splash")?.remove();
+      document.getElementById("splash-branding")?.remove();
+      document.body.style.background = "transparent";
+    }
+  </script>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+</head>
+<body>
+  <nav id="startup-legal" aria-label="Legal information">
+    <a href="legal.html">Legal information — Privacy &amp; Terms</a>
+  </nav>
+  <script>
+    // Startup-only: never leave an HTML overlay above the running player.
+    window.addEventListener("flutter-first-frame", () => {
+      document.getElementById("startup-legal")?.remove();
+    }, { once: true });
+  </script>
+  <picture id="splash">
+      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <section id="web-startup-error" role="alert" hidden>
+    <h1 id="web-startup-title"></h1>
+    <p id="web-startup-message"></p>
+    <div id="web-local-help" hidden>
+      <p>Extract the entire Web ZIP, open a terminal in that folder, then run this command (requires Python):</p>
+      <code>python -m http.server 8080 --bind 127.0.0.1</code>
+      <p>Keep the terminal open and visit <a href="http://localhost:8080/">http://localhost:8080/</a>. Do not open index.html directly.</p>
+    </div>
+  </section>
+  <script>
+    (() => {
+      function showStartupError(title, message, localHelp) {
+        removeSplashFromWeb();
+        document.body.style.background = "#03050C";
+        document.getElementById("web-startup-title").textContent = title;
+        document.getElementById("web-startup-message").textContent = message;
+        document.getElementById("web-local-help").hidden = !localHelp;
+        document.getElementById("web-startup-error").hidden = false;
+      }
+
+      if (window.location.protocol === "file:") {
+        showStartupError(
+          "Open IPTV Pro through a web server",
+          "Flutter Web needs HTTP or HTTPS to load its runtime, fonts, and application assets. This Web bundle is not a standalone desktop executable.",
+          true
+        );
+        return;
+      }
+
+      function loadFlutter() {
+        const bootstrap = document.createElement("script");
+        bootstrap.src = "flutter_bootstrap.js";
+        bootstrap.async = true;
+        bootstrap.onerror = () => showStartupError(
+          "The application could not be loaded",
+          "Make sure the complete Web bundle is hosted here, including flutter_bootstrap.js and the assets folder. If hosting under a subdirectory, build with the matching --base-href path.",
+          false
+        );
+        document.body.appendChild(bootstrap);
+      }
+
+      function loadCompatibilityBridge() { loadFlutter(); }
+
+      const hls = document.createElement("script");
+      hls.src = "vendor/hls.js-1.7.4/hls.min.js";
+      hls.onload = loadCompatibilityBridge;
+      hls.onerror = () => {
+        console.warn("Bundled HLS support could not be loaded; compatibility or browser-native playback may still be available.");
+        loadCompatibilityBridge();
+      };
+      document.body.appendChild(hls);
+    })();
+  </script>
+
+
+</body></html>

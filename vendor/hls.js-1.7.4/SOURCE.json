@@ -1,0 +1,32 @@
+{
+  "name": "hls.js",
+  "version": "1.7.4",
+  "build": "full UMD minified; inline transmuxer worker",
+  "repository": "https://github.com/video-dev/hls.js",
+  "git_commit": "142fcab1fd0de99beafb0e1b07102ec674a9ddf9",
+  "license": "Apache-2.0",
+  "retrieved_utc_date": "2026-10-29",
+  "registry_metadata": "https://registry.npmjs.org/hls.js/1.7.4",
+  "npm_archive": {
+    "url": "https://registry.npmjs.org/hls.js/-/hls.js-1.7.4.tgz",
+    "sha256": "e4ab3d5d13f7cca9ef241d098f39686e19fd451831ba07dc9943482fd5ff75c7",
+    "integrity": "sha512-3GlxGdPvT2YHvQYOt+yOzT/DEior/qJVNIylHA77kgeoBTdQQqi70GwefNEUmHQeNGyjC8U62+bruqW/Tpm+tg=="
+  },
+  "verification": "hls.min.js and LICENSE match the npm archive bytes; archive SHA-512 matches registry integrity; runtime Hls.version is 1.7.4",
+  "files": {
+    "hls.min.js": {
+      "url": "https://cdn.jsdelivr.net/npm/hls.js@1.7.4/dist/hls.min.js",
+      "archive_path": "package/dist/hls.min.js",
+      "sha256": "cfc70cc9e9fc63d071919e087670abc760c8fd1bc889b88588026e4d22193bbe"
+    },
+    "LICENSE": {
+      "url": "https://cdn.jsdelivr.net/npm/hls.js@1.7.4/LICENSE",
+      "archive_path": "package/LICENSE",
+      "sha256": "ca8773cf798c7ed997d4dd7c8e23c348699f8d5b7462636694cc14de6cda12db"
+    },
+    "APACHE-2.0.txt": {
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
+  }
+}
