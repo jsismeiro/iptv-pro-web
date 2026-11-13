@@ -1,6 +1,6 @@
 # IPTV Pro Terms of Use
 
-Effective date: 12 November 2026
+Effective date: 13 November 2026
 
 ## Operator and scope
 
@@ -16,13 +16,13 @@ The app does not verify that a provider, playlist or user has permission to dist
 
 ## Authorized use only
 
-Use only sources and content you are lawfully authorized to access, and comply with applicable law and provider terms. Do not use the app to infringe copyright, redistribute unauthorized streams, misuse credentials, bypass payment or access controls, or circumvent DRM or other technical protection measures. The app does not grant permission for, or promise support for, circumvention.
+Use only sources and content you are lawfully authorized to access, and comply with applicable law and provider terms. Do not use the app to infringe copyright, redistribute unauthorized streams, misuse credentials, bypass payment or access controls, or circumvent DRM or other technical protection measures. The app does not grant permission for, or promise support for, circumvention. These authorized-content restrictions do not prohibit modifying MPL-covered software or otherwise limit rights granted by its license; modifying software is not itself circumvention.
 
 You are responsible for checking the permissions applicable to streaming, downloading, recording, time-shifting and casting in your circumstances. Recording or private-copying exceptions differ by jurisdiction and are not guaranteed by a feature being available. Casting can disclose credential-bearing stream URLs to a receiver and may be restricted by provider terms. Use trusted devices and networks and do not share provider credentials without authorization.
 
 ## Browser and service limitations
 
-Features vary by platform, browser, codec, network and provider. Browser playback requires supported formats, HTTPS-compatible endpoints and appropriate cross-origin permissions. No proxy, transcoding service, uninterrupted playback, recording availability or Cast compatibility is promised. Providers and third-party APIs can change or discontinue access independently.
+Features vary by platform, browser, codec, network and provider. The public `browser-only-v1` profile includes browser video/native HLS/HLS.js and Mediabunny 1.65.2 core container remuxing of direct TS/MKV into MSE fragmented MP4. Remuxing uses browser-supported codecs; it does not transcode or add unsupported HEVC, AC-3 or DTS decoding and offers no playback guarantee. No optional codec extensions or FFmpeg codec binaries ship in this profile. Browser playback still requires HTTPS-compatible endpoints and cross-origin permissions; finite remuxed media and seeking also require HTTP Range support. Remuxing runs locally, adds no CDN or provider proxy/backend, and leaves source URLs and credentials subject to direct-provider request disclosures. No proxy, transcoding service, uninterrupted playback, recording availability or Cast compatibility is promised. Providers and third-party APIs can change or discontinue access independently.
 
 Protect local data, encryption keys, passwords and backups. An origin change does not automatically migrate browser data or recover encryption keys. Do not rely on the operator to recover a provider account, lost backup password, recording or local database. See the Privacy Policy for storage, network, export and security limitations.
 
@@ -32,7 +32,7 @@ Providers, GitHub, Flutter, Google/Cast, TMDB, OpenSubtitles and other reference
 
 ## Software rights and redistribution
 
-No project LICENSE has been selected in this repository. These terms do not choose an open-source license or grant general redistribution rights for project code, branding or third-party content. Third-party components retain their own licenses and rights. Distributors must independently satisfy notice, source-availability, modification/relinking and other applicable obligations. The public browser-only Web profile excludes the optional libmedia/FFmpeg decoder binaries rather than redistributing them with unresolved corresponding-source obligations. Developer builds or repositories that still include those binaries require the review noted in Third-Party Notices; copying notices alone does not resolve it. Exclusion from this profile does not certify the remaining dependencies or eliminate applicable patent or other legal requirements.
+No project LICENSE has been selected in this repository. These terms do not choose an open-source license or grant general redistribution rights for project code, branding or third-party content. Third-party components retain their own licenses and rights. In particular, the unmodified Mediabunny 1.65.2 library and its matching covered source remain under MPL-2.0. These terms do not override or restrict MPL grants to use, modify or redistribute covered software subject to that license, nor impose a general reverse-engineering ban. The standalone Third-Party Notices provide the full MPL text, NOTICE, SOURCE metadata and an explicit matching covered-source archive download. The separate `web/remux_bridge.js` adapter is application code, not a modification of the vendor library; no application-source license is selected here. Distributors must independently satisfy notice, source-availability, modification/relinking and other applicable obligations. The public browser-only Web profile excludes the optional libmedia/FFmpeg decoder binaries rather than redistributing them with unresolved corresponding-source obligations. Developer builds or repositories that still include those binaries require the review noted in Third-Party Notices; copying notices alone does not resolve it. Exclusion from this profile does not certify the remaining dependencies or eliminate applicable patent or other legal requirements.
 
 ## Warranties and responsibility
 

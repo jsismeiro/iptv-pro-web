@@ -18,12 +18,23 @@ The original Markdown and full bundled license/source notices are available from
 <h2>Publication review required</h2>
 <p>The operator must verify legally required identity/contact disclosures and applicable law.
 An operator handle alone may not satisfy these requirements. Do not post secrets in public issues.</p>
-<h2>Browser-only public profile</h2><p>This browser-only public profile excludes libmedia/FFmpeg binaries and
-compatibility playback. The source repository includes optional developer assets
-that are not redistributed by this public profile. Their corresponding-source and
-replacement/relinking review is not a blocker for absent binaries in this bundle.
-This is not a legal guarantee: operator, legal and licensing review is still
-required for the remaining components, content rights and applicable disclosures.
-No project license has been selected.</p><h2>Build-specific Flutter/package licenses</h2><p><a href="legal/flutter-NOTICES">Original build-specific Flutter notices</a> | <a href="legal/flutter-licenses.txt">Readable build-specific Flutter licenses</a></p></article></main>
+<h2>Browser-only public profile</h2><p>The browser-only-v1 public profile excludes libmedia/FFmpeg binaries and
+software-decoding compatibility playback. It includes browser video, native HLS,
+HLS.js and unmodified Mediabunny 1.65.2 core (MPL-2.0) for direct TS/MKV container
+remuxing to MSE fragmented MP4 with browser-supported codecs. No optional codec
+extensions or FFmpeg codec binaries are included. Remuxing does not add unsupported HEVC,
+AC-3 or DTS decoding or guarantee playback. Full MPL text, notices, source metadata
+and the matching original npm source archive accompany this bundle. MPL-covered
+source and its license grants remain available independently of application terms;
+our separate web/remux_bridge.js adapter is application code, not a vendor-library
+modification. No project license has been selected. The source repository includes
+optional developer assets that are not redistributed by this public profile.
+Their unresolved corresponding-source and replacement/relinking review applies
+to distributions containing them, not absent binaries in this bundle. This is
+not a legal guarantee: review the included components, content rights, operator
+identity and applicable disclosures. Remuxing is local: no provider proxy/backend
+or new CDN is added. Direct provider requests still require CORS and HTTPS support;
+finite remuxed media and seeking also require HTTP Range support. These requests
+can disclose source URLs, credentials and request metadata.</p><p><a href="vendor/mediabunny-1.65.2/mediabunny-1.65.2.tgz" download>Download matching MPL-covered source — Mediabunny 1.65.2 (original npm archive, TGZ)</a></p><h2>Build-specific Flutter/package licenses</h2><p><a href="legal/flutter-NOTICES">Original build-specific Flutter notices</a> | <a href="legal/flutter-licenses.txt">Readable build-specific Flutter licenses</a></p></article></main>
 <footer>Standalone client, not an IPTV service. Notices do not certify legal compliance.</footer>
 </body></html>

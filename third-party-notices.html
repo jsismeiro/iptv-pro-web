@@ -15,7 +15,7 @@ Contact: <a href="mailto:test@test.com">mailto:test@test.com</a></p></header>
 <h2>Project license status</h2>
 <p>No project <code>LICENSE</code> has been chosen or added to this repository. Nothing in this notice assigns an owner identity or grants an open-source license for the IPTV Pro project itself. Third-party components remain subject to their own licenses.</p>
 <h2>Public web redistribution: review required</h2>
-<p>This browser-only public profile excludes libmedia/FFmpeg binaries and compatibility playback. The source repository includes optional developer assets that are not redistributed by this public profile. Their corresponding-source and replacement/relinking review is not a blocker for absent binaries in this bundle. This is not a legal guarantee: operator, legal and licensing review is still required for the remaining components, content rights and applicable disclosures. No project license has been selected.</p>
+<p>The browser-only-v1 public profile excludes libmedia/FFmpeg binaries and software-decoding compatibility playback. It includes browser video, native HLS, HLS.js and unmodified Mediabunny 1.65.2 core (MPL-2.0) for direct TS/MKV container remuxing to MSE fragmented MP4 with browser-supported codecs. No optional codec extensions or FFmpeg codec binaries are included. Remuxing does not add unsupported HEVC, AC-3 or DTS decoding or guarantee playback. Full MPL text, notices, source metadata and the matching original npm source archive accompany this bundle. MPL-covered source and its license grants remain available independently of application terms; our separate web/remux_bridge.js adapter is application code, not a vendor-library modification. No project license has been selected. The source repository includes optional developer assets that are not redistributed by this public profile. Their unresolved corresponding-source and replacement/relinking review applies to distributions containing them, not absent binaries in this bundle. This is not a legal guarantee: review the included components, content rights, operator identity and applicable disclosures. Remuxing is local: no provider proxy/backend or new CDN is added. Direct provider requests still require CORS and HTTPS support; finite remuxed media and seeking also require HTTP Range support. These requests can disclose source URLs, credentials and request metadata.</p>
 <h2>Flutter and package dependencies</h2>
 <p>The app&#x27;s <strong>Settings &gt; About &amp; Privacy &gt; Open source licenses</strong> screen uses Flutter&#x27;s <code>LicensePage</code> and generated <code>LicenseRegistry</code> data to display licenses supplied by Flutter and bundled Dart/Flutter packages. That in-app list is generated from the dependencies included in the particular build and is the appropriate dependency-level notice for that build.</p>
 <p>The locally patched <code>flutter_chrome_cast</code> <strong>2.0.0</strong> retains its <strong>BSD-3-Clause</strong> license in <a href="legal/packages/flutter_chrome_cast/LICENSE">packages/flutter_chrome_cast/LICENSE</a>. Its iOS Swift package minimum version fix is documented in <code>packages/flutter_chrome_cast/LOCAL_PATCHES.md</code>.</p>
@@ -26,8 +26,13 @@ Contact: <a href="mailto:test@test.com">mailto:test@test.com</a></p></header>
 <h2>Browser HLS playback</h2>
 <p>Web builds bundle HLS.js <strong>1.7.4</strong>, copyright Dailymotion and contributors, licensed under the <strong>Apache License 2.0</strong>. Source: <a href="https://github.com/video-dev/hls.js">https://github.com/video-dev/hls.js</a>. The upstream <a href="vendor/hls.js-1.7.4/LICENSE">notice</a>, <a href="vendor/hls.js-1.7.4/APACHE-2.0.txt">full Apache license</a> and <a href="vendor/hls.js-1.7.4/SOURCE.json">source/hash metadata</a> ship in <code>web/vendor/hls.js-1.7.4/</code> alongside the unmodified JavaScript distribution. HLS.js transmuxes supported HLS media; it does not add codec transcoding.</p>
 <p>The locally patched <code>video_player_web</code> <strong>2.4.0</strong> remains subject to the Flutter Authors&#x27; <strong>BSD-3-Clause</strong> license, retained in <a href="legal/packages/video_player_web/LICENSE">packages/video_player_web/LICENSE</a>. Local integration changes are documented in that package&#x27;s <code>PATCHES.md</code>.</p>
+<h2>Browser container remuxing (Mediabunny)</h2>
+<p>The public <code>browser-only-v1</code> profile includes the unmodified <strong>Mediabunny 1.65.2 core</strong>, copyright (c) 2026-present Vanilagy and contributors, under the <strong>Mozilla Public License 2.0 (MPL-2.0)</strong>. Preserve the individual copyright/license notices in its covered source. The five pinned files in <code>web/vendor/mediabunny-1.65.2/</code> are <code>mediabunny.min.mjs</code>, <a href="vendor/mediabunny-1.65.2/LICENSE">full MPL license</a>, <a href="vendor/mediabunny-1.65.2/NOTICE.md">NOTICE.md</a>, <a href="vendor/mediabunny-1.65.2/SOURCE.json">SOURCE.json</a>, and the <a href="vendor/mediabunny-1.65.2/mediabunny-1.65.2.tgz">matching MPL-covered source download — original npm archive (TGZ)</a>. The archive&#x27;s pinned npm SHA-512 integrity and per-file SHA-256 hashes are recorded in <code>SOURCE.json</code> and verified offline by <code>tool/web_remux_assets.py</code>.</p>
+<p>That exact original npm archive contains 66 <code>package/src/*.ts</code> files: the preferred source form of the covered library, including its notices, plus README, package metadata, LICENSE and the upstream distribution. The archive is served alongside the library, not merely linked to a moving upstream repository. No vendor-library files have been modified. The app&#x27;s own adapter is separate in <code>web/remux_bridge.js</code>; no application-source license has been chosen. Upstream: <a href="https://github.com/Vanilagy/mediabunny">https://github.com/Vanilagy/mediabunny</a> at revision <code>173f6b70765fa3a6ffc1c82737514416fa559ef5</code>.</p>
+<p>MPL-covered source remains available under MPL-2.0. Its rights to use, modify and redistribute covered software, subject to that license, are not overridden by application terms or the project&#x27;s unchosen license. Distributors must retain the full license, notices, source metadata and matching covered-source download; review MPL obligations for any later covered-file modifications. This is not a grant of rights to provider content, codecs or project branding, or a claim of legal clearance.</p>
+<p>This core-only integration includes <strong>no optional codec-extension packages or FFmpeg codec binaries</strong>. It remuxes direct TS/MKV into MSE fragmented MP4 in the browser; it does not transcode or add unsupported HEVC, AC-3 or DTS codecs, bypass DRM, or guarantee playback. Assets are self-hosted; no new CDN, provider proxy or backend is added. Provider requests remain direct and subject to HTTP Range, CORS and HTTPS requirements and source-credential privacy risks described in <a href="privacy.html">Privacy</a>.</p>
 <h2>Browser compatibility decoding excluded</h2>
-<p>This browser-only public profile excludes libmedia/FFmpeg binaries and compatibility playback. The source repository includes optional developer assets that are not redistributed by this public profile. Their corresponding-source and replacement/relinking review is not a blocker for absent binaries in this bundle. This is not a legal guarantee: operator, legal and licensing review is still required for the remaining components, content rights and applicable disclosures. No project license has been selected.</p>
+<p>The browser-only-v1 public profile excludes libmedia/FFmpeg binaries and software-decoding compatibility playback. It includes browser video, native HLS, HLS.js and unmodified Mediabunny 1.65.2 core (MPL-2.0) for direct TS/MKV container remuxing to MSE fragmented MP4 with browser-supported codecs. No optional codec extensions or FFmpeg codec binaries are included. Remuxing does not add unsupported HEVC, AC-3 or DTS decoding or guarantee playback. Full MPL text, notices, source metadata and the matching original npm source archive accompany this bundle. MPL-covered source and its license grants remain available independently of application terms; our separate web/remux_bridge.js adapter is application code, not a vendor-library modification. No project license has been selected. The source repository includes optional developer assets that are not redistributed by this public profile. Their unresolved corresponding-source and replacement/relinking review applies to distributions containing them, not absent binaries in this bundle. This is not a legal guarantee: review the included components, content rights, operator identity and applicable disclosures. Remuxing is local: no provider proxy/backend or new CDN is added. Direct provider requests still require CORS and HTTPS support; finite remuxed media and seeking also require HTTP Range support. These requests can disclose source URLs, credentials and request metadata.</p>
 <p>Optional developer assets and their notices are available in the <a href="https://github.com/jsismeiro/iptv-pro">source repository</a>.</p>
 <h2>Inter font</h2>
 <p>IPTV Pro bundles the Inter variable font. Its <a href="legal/assets/fonts/Inter-OFL.txt">original notice and full SIL Open Font License</a> are registered explicitly in the same in-app license screen. The license is also reproduced below without abridgment.</p>
@@ -120,6 +125,7 @@ DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
 </pre><p><a href="legal/THIRD_PARTY_NOTICES.md">Original Markdown</a></p><h2>Build-specific Flutter/package licenses</h2><p><a href="legal/flutter-NOTICES">Original build-specific Flutter notices</a> | <a href="legal/flutter-licenses.txt">Readable build-specific Flutter licenses</a></p><h2>Full bundled license texts and source metadata</h2>
+<p><a href="vendor/mediabunny-1.65.2/mediabunny-1.65.2.tgz" download>Download matching MPL-covered source — Mediabunny 1.65.2 (original npm archive, TGZ)</a></p>
 <h3>web/vendor/hls.js-1.7.4/LICENSE</h3><p><a href="vendor/hls.js-1.7.4/LICENSE">Original file</a></p>
 <pre>Copyright (c) 2017 Dailymotion (http://www.dailymotion.com)
 
@@ -388,6 +394,430 @@ THE SOFTWARE.
   }
 }
 </pre>
+<h3>web/vendor/mediabunny-1.65.2/LICENSE</h3><p><a href="vendor/mediabunny-1.65.2/LICENSE">Original file</a></p>
+<pre>Mozilla Public License Version 2.0
+==================================
+
+1. Definitions
+--------------
+
+1.1. &quot;Contributor&quot;
+    means each individual or legal entity that creates, contributes to
+    the creation of, or owns Covered Software.
+
+1.2. &quot;Contributor Version&quot;
+    means the combination of the Contributions of others (if any) used
+    by a Contributor and that particular Contributor&#x27;s Contribution.
+
+1.3. &quot;Contribution&quot;
+    means Covered Software of a particular Contributor.
+
+1.4. &quot;Covered Software&quot;
+    means Source Code Form to which the initial Contributor has attached
+    the notice in Exhibit A, the Executable Form of such Source Code
+    Form, and Modifications of such Source Code Form, in each case
+    including portions thereof.
+
+1.5. &quot;Incompatible With Secondary Licenses&quot;
+    means
+
+    (a) that the initial Contributor has attached the notice described
+        in Exhibit B to the Covered Software; or
+
+    (b) that the Covered Software was made available under the terms of
+        version 1.1 or earlier of the License, but not also under the
+        terms of a Secondary License.
+
+1.6. &quot;Executable Form&quot;
+    means any form of the work other than Source Code Form.
+
+1.7. &quot;Larger Work&quot;
+    means a work that combines Covered Software with other material, in
+    a separate file or files, that is not Covered Software.
+
+1.8. &quot;License&quot;
+    means this document.
+
+1.9. &quot;Licensable&quot;
+    means having the right to grant, to the maximum extent possible,
+    whether at the time of the initial grant or subsequently, any and
+    all of the rights conveyed by this License.
+
+1.10. &quot;Modifications&quot;
+    means any of the following:
+
+    (a) any file in Source Code Form that results from an addition to,
+        deletion from, or modification of the contents of Covered
+        Software; or
+
+    (b) any new file in Source Code Form that contains any Covered
+        Software.
+
+1.11. &quot;Patent Claims&quot; of a Contributor
+    means any patent claim(s), including without limitation, method,
+    process, and apparatus claims, in any patent Licensable by such
+    Contributor that would be infringed, but for the grant of the
+    License, by the making, using, selling, offering for sale, having
+    made, import, or transfer of either its Contributions or its
+    Contributor Version.
+
+1.12. &quot;Secondary License&quot;
+    means either the GNU General Public License, Version 2.0, the GNU
+    Lesser General Public License, Version 2.1, the GNU Affero General
+    Public License, Version 3.0, or any later versions of those
+    licenses.
+
+1.13. &quot;Source Code Form&quot;
+    means the form of the work preferred for making modifications.
+
+1.14. &quot;You&quot; (or &quot;Your&quot;)
+    means an individual or a legal entity exercising rights under this
+    License. For legal entities, &quot;You&quot; includes any entity that
+    controls, is controlled by, or is under common control with You. For
+    purposes of this definition, &quot;control&quot; means (a) the power, direct
+    or indirect, to cause the direction or management of such entity,
+    whether by contract or otherwise, or (b) ownership of more than
+    fifty percent (50%) of the outstanding shares or beneficial
+    ownership of such entity.
+
+2. License Grants and Conditions
+--------------------------------
+
+2.1. Grants
+
+Each Contributor hereby grants You a world-wide, royalty-free,
+non-exclusive license:
+
+(a) under intellectual property rights (other than patent or trademark)
+    Licensable by such Contributor to use, reproduce, make available,
+    modify, display, perform, distribute, and otherwise exploit its
+    Contributions, either on an unmodified basis, with Modifications, or
+    as part of a Larger Work; and
+
+(b) under Patent Claims of such Contributor to make, use, sell, offer
+    for sale, have made, import, and otherwise transfer either its
+    Contributions or its Contributor Version.
+
+2.2. Effective Date
+
+The licenses granted in Section 2.1 with respect to any Contribution
+become effective for each Contribution on the date the Contributor first
+distributes such Contribution.
+
+2.3. Limitations on Grant Scope
+
+The licenses granted in this Section 2 are the only rights granted under
+this License. No additional rights or licenses will be implied from the
+distribution or licensing of Covered Software under this License.
+Notwithstanding Section 2.1(b) above, no patent license is granted by a
+Contributor:
+
+(a) for any code that a Contributor has removed from Covered Software;
+    or
+
+(b) for infringements caused by: (i) Your and any other third party&#x27;s
+    modifications of Covered Software, or (ii) the combination of its
+    Contributions with other software (except as part of its Contributor
+    Version); or
+
+(c) under Patent Claims infringed by Covered Software in the absence of
+    its Contributions.
+
+This License does not grant any rights in the trademarks, service marks,
+or logos of any Contributor (except as may be necessary to comply with
+the notice requirements in Section 3.4).
+
+2.4. Subsequent Licenses
+
+No Contributor makes additional grants as a result of Your choice to
+distribute the Covered Software under a subsequent version of this
+License (see Section 10.2) or under the terms of a Secondary License (if
+permitted under the terms of Section 3.3).
+
+2.5. Representation
+
+Each Contributor represents that the Contributor believes its
+Contributions are its original creation(s) or it has sufficient rights
+to grant the rights to its Contributions conveyed by this License.
+
+2.6. Fair Use
+
+This License is not intended to limit any rights You have under
+applicable copyright doctrines of fair use, fair dealing, or other
+equivalents.
+
+2.7. Conditions
+
+Sections 3.1, 3.2, 3.3, and 3.4 are conditions of the licenses granted
+in Section 2.1.
+
+3. Responsibilities
+-------------------
+
+3.1. Distribution of Source Form
+
+All distribution of Covered Software in Source Code Form, including any
+Modifications that You create or to which You contribute, must be under
+the terms of this License. You must inform recipients that the Source
+Code Form of the Covered Software is governed by the terms of this
+License, and how they can obtain a copy of this License. You may not
+attempt to alter or restrict the recipients&#x27; rights in the Source Code
+Form.
+
+3.2. Distribution of Executable Form
+
+If You distribute Covered Software in Executable Form then:
+
+(a) such Covered Software must also be made available in Source Code
+    Form, as described in Section 3.1, and You must inform recipients of
+    the Executable Form how they can obtain a copy of such Source Code
+    Form by reasonable means in a timely manner, at a charge no more
+    than the cost of distribution to the recipient; and
+
+(b) You may distribute such Executable Form under the terms of this
+    License, or sublicense it under different terms, provided that the
+    license for the Executable Form does not attempt to limit or alter
+    the recipients&#x27; rights in the Source Code Form under this License.
+
+3.3. Distribution of a Larger Work
+
+You may create and distribute a Larger Work under terms of Your choice,
+provided that You also comply with the requirements of this License for
+the Covered Software. If the Larger Work is a combination of Covered
+Software with a work governed by one or more Secondary Licenses, and the
+Covered Software is not Incompatible With Secondary Licenses, this
+License permits You to additionally distribute such Covered Software
+under the terms of such Secondary License(s), so that the recipient of
+the Larger Work may, at their option, further distribute the Covered
+Software under the terms of either this License or such Secondary
+License(s).
+
+3.4. Notices
+
+You may not remove or alter the substance of any license notices
+(including copyright notices, patent notices, disclaimers of warranty,
+or limitations of liability) contained within the Source Code Form of
+the Covered Software, except that You may alter any license notices to
+the extent required to remedy known factual inaccuracies.
+
+3.5. Application of Additional Terms
+
+You may choose to offer, and to charge a fee for, warranty, support,
+indemnity or liability obligations to one or more recipients of Covered
+Software. However, You may do so only on Your own behalf, and not on
+behalf of any Contributor. You must make it absolutely clear that any
+such warranty, support, indemnity, or liability obligation is offered by
+You alone, and You hereby agree to indemnify every Contributor for any
+liability incurred by such Contributor as a result of warranty, support,
+indemnity or liability terms You offer. You may include additional
+disclaimers of warranty and limitations of liability specific to any
+jurisdiction.
+
+4. Inability to Comply Due to Statute or Regulation
+---------------------------------------------------
+
+If it is impossible for You to comply with any of the terms of this
+License with respect to some or all of the Covered Software due to
+statute, judicial order, or regulation then You must: (a) comply with
+the terms of this License to the maximum extent possible; and (b)
+describe the limitations and the code they affect. Such description must
+be placed in a text file included with all distributions of the Covered
+Software under this License. Except to the extent prohibited by statute
+or regulation, such description must be sufficiently detailed for a
+recipient of ordinary skill to be able to understand it.
+
+5. Termination
+--------------
+
+5.1. The rights granted under this License will terminate automatically
+if You fail to comply with any of its terms. However, if You become
+compliant, then the rights granted under this License from a particular
+Contributor are reinstated (a) provisionally, unless and until such
+Contributor explicitly and finally terminates Your grants, and (b) on an
+ongoing basis, if such Contributor fails to notify You of the
+non-compliance by some reasonable means prior to 60 days after You have
+come back into compliance. Moreover, Your grants from a particular
+Contributor are reinstated on an ongoing basis if such Contributor
+notifies You of the non-compliance by some reasonable means, this is the
+first time You have received notice of non-compliance with this License
+from such Contributor, and You become compliant prior to 30 days after
+Your receipt of the notice.
+
+5.2. If You initiate litigation against any entity by asserting a patent
+infringement claim (excluding declaratory judgment actions,
+counter-claims, and cross-claims) alleging that a Contributor Version
+directly or indirectly infringes any patent, then the rights granted to
+You by any and all Contributors for the Covered Software under Section
+2.1 of this License shall terminate.
+
+5.3. In the event of termination under Sections 5.1 or 5.2 above, all
+end user license agreements (excluding distributors and resellers) which
+have been validly granted by You or Your distributors under this License
+prior to termination shall survive termination.
+
+************************************************************************
+*                                                                      *
+*  6. Disclaimer of Warranty                                           *
+*  -------------------------                                           *
+*                                                                      *
+*  Covered Software is provided under this License on an &quot;as is&quot;       *
+*  basis, without warranty of any kind, either expressed, implied, or  *
+*  statutory, including, without limitation, warranties that the       *
+*  Covered Software is free of defects, merchantable, fit for a        *
+*  particular purpose or non-infringing. The entire risk as to the     *
+*  quality and performance of the Covered Software is with You.        *
+*  Should any Covered Software prove defective in any respect, You     *
+*  (not any Contributor) assume the cost of any necessary servicing,   *
+*  repair, or correction. This disclaimer of warranty constitutes an   *
+*  essential part of this License. No use of any Covered Software is   *
+*  authorized under this License except under this disclaimer.         *
+*                                                                      *
+************************************************************************
+
+************************************************************************
+*                                                                      *
+*  7. Limitation of Liability                                          *
+*  --------------------------                                          *
+*                                                                      *
+*  Under no circumstances and under no legal theory, whether tort      *
+*  (including negligence), contract, or otherwise, shall any           *
+*  Contributor, or anyone who distributes Covered Software as          *
+*  permitted above, be liable to You for any direct, indirect,         *
+*  special, incidental, or consequential damages of any character      *
+*  including, without limitation, damages for lost profits, loss of    *
+*  goodwill, work stoppage, computer failure or malfunction, or any    *
+*  and all other commercial damages or losses, even if such party      *
+*  shall have been informed of the possibility of such damages. This   *
+*  limitation of liability shall not apply to liability for death or   *
+*  personal injury resulting from such party&#x27;s negligence to the       *
+*  extent applicable law prohibits such limitation. Some               *
+*  jurisdictions do not allow the exclusion or limitation of           *
+*  incidental or consequential damages, so this exclusion and          *
+*  limitation may not apply to You.                                    *
+*                                                                      *
+************************************************************************
+
+8. Litigation
+-------------
+
+Any litigation relating to this License may be brought only in the
+courts of a jurisdiction where the defendant maintains its principal
+place of business and such litigation shall be governed by laws of that
+jurisdiction, without reference to its conflict-of-law provisions.
+Nothing in this Section shall prevent a party&#x27;s ability to bring
+cross-claims or counter-claims.
+
+9. Miscellaneous
+----------------
+
+This License represents the complete agreement concerning the subject
+matter hereof. If any provision of this License is held to be
+unenforceable, such provision shall be reformed only to the extent
+necessary to make it enforceable. Any law or regulation which provides
+that the language of a contract shall be construed against the drafter
+shall not be used to construe this License against a Contributor.
+
+10. Versions of the License
+---------------------------
+
+10.1. New Versions
+
+Mozilla Foundation is the license steward. Except as provided in Section
+10.3, no one other than the license steward has the right to modify or
+publish new versions of this License. Each version will be given a
+distinguishing version number.
+
+10.2. Effect of New Versions
+
+You may distribute the Covered Software under the terms of the version
+of the License under which You originally received the Covered Software,
+or under the terms of any subsequent version published by the license
+steward.
+
+10.3. Modified Versions
+
+If you create software not governed by this License, and you want to
+create a new license for such software, you may create and use a
+modified version of this License if you rename the license and remove
+any references to the name of the license steward (except to note that
+such modified license differs from this License).
+
+10.4. Distributing Source Code Form that is Incompatible With Secondary
+Licenses
+
+If You choose to distribute Source Code Form that is Incompatible With
+Secondary Licenses under the terms of this version of the License, the
+notice described in Exhibit B of this License must be attached.
+
+Exhibit A - Source Code Form License Notice
+-------------------------------------------
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+If it is not possible or desirable to put the notice in a particular
+file, then You may include the notice in a location (such as a LICENSE
+file in a relevant directory) where a recipient would be likely to look
+for such a notice.
+
+You may add additional accurate notices of copyright ownership.
+
+Exhibit B - &quot;Incompatible With Secondary Licenses&quot; Notice
+---------------------------------------------------------
+
+  This Source Code Form is &quot;Incompatible With Secondary Licenses&quot;, as
+  defined by the Mozilla Public License, v. 2.0.
+</pre>
+<h3>web/vendor/mediabunny-1.65.2/NOTICE.md</h3><p><a href="vendor/mediabunny-1.65.2/NOTICE.md">Original file</a></p>
+<pre># Mediabunny 1.65.2: browser container remuxing
+
+Copyright (c) 2026-present Vanilagy and contributors; preserve the individual
+copyright/license notices in the original covered source files.
+
+The unmodified Mediabunny core is provided under the Mozilla Public License 2.0.
+The full license is in LICENSE. No optional codec-extension packages or FFmpeg
+binaries are included in this distribution. Remuxing does not add codecs that
+the browser cannot decode and does not bypass provider CORS, HTTPS or DRM.
+
+## Corresponding covered source
+
+The original npm archive, mediabunny-1.65.2.tgz, is served beside this notice and the
+JavaScript bundle. It includes package/src/*.ts: the preferred source form of
+the covered library, including its MPL notices, along with package metadata,
+README and the original distribution. No library files have been modified.
+Our separate adapter is web/remux_bridge.js in the IPTV Pro source repository.
+The MPL-covered library source remains available under MPL-2.0; application
+terms do not restrict rights granted by that license.
+
+Upstream source revision:
+https://github.com/Vanilagy/mediabunny/tree/173f6b70765fa3a6ffc1c82737514416fa559ef5
+Upstream package:
+https://registry.npmjs.org/mediabunny/-/mediabunny-1.65.2.tgz
+
+SOURCE.json records the pinned npm integrity and per-file SHA-256 hashes.
+This is provenance and notice packaging, not legal clearance, independent
+binary reproducibility certification, or a grant of codec/content rights.
+</pre>
+<h3>web/vendor/mediabunny-1.65.2/SOURCE.json</h3><p><a href="vendor/mediabunny-1.65.2/SOURCE.json">Original file</a></p>
+<pre>{
+  &quot;project&quot;: &quot;https://github.com/Vanilagy/mediabunny&quot;,
+  &quot;version&quot;: &quot;1.65.2&quot;,
+  &quot;revision&quot;: &quot;173f6b70765fa3a6ffc1c82737514416fa559ef5&quot;,
+  &quot;license&quot;: &quot;MPL-2.0&quot;,
+  &quot;npm_tarball&quot;: &quot;https://registry.npmjs.org/mediabunny/-/mediabunny-1.65.2.tgz&quot;,
+  &quot;npm_integrity&quot;: &quot;sha512-goZpibvo/5hkc/56WVNm93Ini+o7K4y8aXA20c/BN1B+m3L5aHQa8MTvO+S1APg/YI8kMILtrX6QCqUtxLW7bA==&quot;,
+  &quot;covered_source_archive&quot;: &quot;mediabunny-1.65.2.tgz&quot;,
+  &quot;note&quot;: &quot;Unmodified core only; browser codecs; no FFmpeg or optional codec extensions.&quot;,
+  &quot;files&quot;: {
+    &quot;LICENSE&quot;: &quot;3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04&quot;,
+    &quot;NOTICE.md&quot;: &quot;54f04a130eb8a5455cffab87d23c634e65a0b27cdc5af61f6478a8ff4479b3f3&quot;,
+    &quot;mediabunny-1.65.2.tgz&quot;: &quot;93bceb27fd807e06e8b6a0e9e02350bf69e1d70da12d685dd0b133b54c3b1ff6&quot;,
+    &quot;mediabunny.min.mjs&quot;: &quot;08149edcc8cf980da65d94a0a54a8fc0fa85a65f89b66f55c906f33618363919&quot;
+  }
+}
+</pre>
+<h3>web/vendor/mediabunny-1.65.2/mediabunny-1.65.2.tgz</h3><p><a href="vendor/mediabunny-1.65.2/mediabunny-1.65.2.tgz" download>Download original source archive (binary TGZ)</a></p>
 <h3>packages/flutter_chrome_cast/LICENSE</h3><p><a href="legal/packages/flutter_chrome_cast/LICENSE">Original file</a></p>
 <pre>Copyright 2023 felnanuke2
 

@@ -8,11 +8,11 @@ No project `LICENSE` has been chosen or added to this repository. Nothing in thi
 
 The [Legal information](legal.html) page identifies the deployment's operator and contact. See also [Privacy](PRIVACY.md) and [Terms of use](TERMS.md). Publishing these notices does not establish that a deployment is lawful or that all third-party obligations have been met.
 
-**Public Web profile (`browser-only-v1`):** the release workflow excludes the optional libmedia/FFmpeg JavaScript/Wasm decoder distribution and its loading bridge from both the downloadable Web ZIP and GitHub Pages. Only browser video and HLS.js playback are available. The compatibility-decoding section below describes optional assets in the developer repository, **not components shipped in this public Web profile**. Its generated standalone notices explicitly identify this exclusion and retain the notices for the components actually distributed.
+**Public Web profile (`browser-only-v1`):** the release workflow excludes the optional libmedia/FFmpeg JavaScript/Wasm decoder distribution and its loading bridge from both the downloadable Web ZIP and GitHub Pages. Browser video, native HLS and HLS.js remain, with unmodified Mediabunny core for direct TS/MKV container remuxing into MSE fragmented MP4 using browser-supported codecs. No optional codec extensions or FFmpeg codec binaries ship in this profile. The compatibility-decoding section below describes optional assets in the developer repository, **not components shipped in this public Web profile**. Its generated standalone notices explicitly identify this exclusion and retain the notices for the components actually distributed.
 
 For developer builds, source-repository redistribution, or any distribution that includes those optional binaries, resolve the libmedia/FFmpeg corresponding-source, dependency-license and replacement/relinking review described below and in the vendor notice. The current source pointers are not a complete corresponding-source bundle. Excluding those binaries from a Web bundle does not resolve obligations for copies already distributed or for the repository containing them. Review the remaining dependencies and applicable codec/patent, API, artwork and trademark permissions as well.
 
-The standalone web notices packager copies the full license texts and source metadata for the selected profile, the patched-package licenses, and the Inter OFL without shortening them. Public builds also expose their build-specific Flutter notices as a standalone download. It does not audit dependencies or generate Flutter's dependency license registry. Retain the build-specific Flutter/package notices too; review the actual release, not just this summary.
+The standalone web notices packager copies the full license texts, notices, source metadata and matching Mediabunny source archive for the selected profile, the patched-package licenses, and the Inter OFL without shortening them. Binary source archives are download-only, not rendered as text; original Markdown downloads retain the repository documents byte for byte. Public builds also expose their build-specific Flutter notices as a standalone download. It does not audit dependencies or generate Flutter's dependency license registry. Retain the build-specific Flutter/package notices too; review the actual release, not just this summary.
 
 ## Flutter and package dependencies
 
@@ -52,6 +52,16 @@ Authors' **BSD-3-Clause** license, retained in
 [packages/video_player_web/LICENSE](packages/video_player_web/LICENSE). Local integration changes are documented
 in that package's `PATCHES.md`.
 
+## Browser container remuxing (Mediabunny)
+
+The public `browser-only-v1` profile includes the unmodified **Mediabunny 1.65.2 core**, copyright (c) 2026-present Vanilagy and contributors, under the **Mozilla Public License 2.0 (MPL-2.0)**. Preserve the individual copyright/license notices in its covered source. The five pinned files in `web/vendor/mediabunny-1.65.2/` are `mediabunny.min.mjs`, [full MPL license](web/vendor/mediabunny-1.65.2/LICENSE), [NOTICE.md](web/vendor/mediabunny-1.65.2/NOTICE.md), [SOURCE.json](web/vendor/mediabunny-1.65.2/SOURCE.json), and the [matching MPL-covered source download — original npm archive (TGZ)](web/vendor/mediabunny-1.65.2/mediabunny-1.65.2.tgz). The archive's pinned npm SHA-512 integrity and per-file SHA-256 hashes are recorded in `SOURCE.json` and verified offline by `tool/web_remux_assets.py`.
+
+That exact original npm archive contains 66 `package/src/*.ts` files: the preferred source form of the covered library, including its notices, plus README, package metadata, LICENSE and the upstream distribution. The archive is served alongside the library, not merely linked to a moving upstream repository. No vendor-library files have been modified. The app's own adapter is separate in `web/remux_bridge.js`; no application-source license has been chosen. Upstream: https://github.com/Vanilagy/mediabunny at revision `173f6b70765fa3a6ffc1c82737514416fa559ef5`.
+
+MPL-covered source remains available under MPL-2.0. Its rights to use, modify and redistribute covered software, subject to that license, are not overridden by application terms or the project's unchosen license. Distributors must retain the full license, notices, source metadata and matching covered-source download; review MPL obligations for any later covered-file modifications. This is not a grant of rights to provider content, codecs or project branding, or a claim of legal clearance.
+
+This core-only integration includes **no optional codec-extension packages or FFmpeg codec binaries**. It remuxes direct TS/MKV into MSE fragmented MP4 in the browser; it does not transcode or add unsupported HEVC, AC-3 or DTS codecs, bypass DRM, or guarantee playback. Assets are self-hosted; no new CDN, provider proxy or backend is added. Provider requests remain direct and subject to HTTP Range, CORS and HTTPS requirements and source-credential privacy risks described in [Privacy](PRIVACY.md).
+
 ## Browser compatibility decoding (libmedia / FFmpeg)
 
 Developer builds that have not been prepared as the browser-only public profile also distribute **libmedia / AVPlayer 1.3.1**, copyright
@@ -62,12 +72,12 @@ package; baseline/SIMD decoder and audio-helper Wasm comes from revision
 no encoder binaries (including x264/x265), atomic or wasm64 variants are shipped.
 
 The Wasm includes **FFmpeg** decoder/util/resampling code (copyright FFmpeg
-developers and individual authors; listed upstream as LGPL-2.1-or-later) and
+developers and individual authors; license depends on exact configuration) and
 **SoundTouch** pitch/stretch code (Olli Parviainen and contributors; listed
 upstream as LGPL 2.1). Other dependencies have their own terms; excluding GPL
-encoders does not establish the license status of every transitive component.
+encoders does not establish the license status of every transitive component. The upstream build script enables GPL and version 3 options (`--enable-gpl` and `--enable-version3`); the exact shipped binaries' source/build correspondence and effective licensing remain unresolved. Do not describe them as verified LGPL-only or as a verified GPL-compliant distribution.
 
-The deployed `web/vendor/libmedia-1.3.1/` directory retains
+The optional developer `web/vendor/libmedia-1.3.1/` directory retains
 [LGPLv3](web/vendor/libmedia-1.3.1/COPYING.LGPLv3),
 [GPLv3](web/vendor/libmedia-1.3.1/COPYING.GPLv3),
 [LGPLv2.1](web/vendor/libmedia-1.3.1/COPYING.LGPLv2.1),

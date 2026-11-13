@@ -1,0 +1,16 @@
+{
+  "project": "https://github.com/Vanilagy/mediabunny",
+  "version": "1.65.2",
+  "revision": "173f6b70765fa3a6ffc1c82737514416fa559ef5",
+  "license": "MPL-2.0",
+  "npm_tarball": "https://registry.npmjs.org/mediabunny/-/mediabunny-1.65.2.tgz",
+  "npm_integrity": "sha512-goZpibvo/5hkc/56WVNm93Ini+o7K4y8aXA20c/BN1B+m3L5aHQa8MTvO+S1APg/YI8kMILtrX6QCqUtxLW7bA==",
+  "covered_source_archive": "mediabunny-1.65.2.tgz",
+  "note": "Unmodified core only; browser codecs; no FFmpeg or optional codec extensions.",
+  "files": {
+    "LICENSE": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+    "NOTICE.md": "54f04a130eb8a5455cffab87d23c634e65a0b27cdc5af61f6478a8ff4479b3f3",
+    "mediabunny-1.65.2.tgz": "93bceb27fd807e06e8b6a0e9e02350bf69e1d70da12d685dd0b133b54c3b1ff6",
+    "mediabunny.min.mjs": "08149edcc8cf980da65d94a0a54a8fc0fa85a65f89b66f55c906f33618363919"
+  }
+}

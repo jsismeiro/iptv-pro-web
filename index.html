@@ -195,12 +195,23 @@
 
       function loadCompatibilityBridge() { loadFlutter(); }
 
+      function loadRemuxBridge() {
+        const remux = document.createElement("script");
+        remux.src = "remux_bridge.js";
+        remux.onload = loadCompatibilityBridge;
+        remux.onerror = () => {
+          console.warn("Container remuxing could not be loaded; standard browser playback remains available.");
+          loadCompatibilityBridge();
+        };
+        document.body.appendChild(remux);
+      }
+
       const hls = document.createElement("script");
       hls.src = "vendor/hls.js-1.7.4/hls.min.js";
-      hls.onload = loadCompatibilityBridge;
+      hls.onload = loadRemuxBridge;
       hls.onerror = () => {
-        console.warn("Bundled HLS support could not be loaded; compatibility or browser-native playback may still be available.");
-        loadCompatibilityBridge();
+        console.warn("Bundled HLS support could not be loaded; remuxing or browser-native playback may still be available.");
+        loadRemuxBridge();
       };
       document.body.appendChild(hls);
     })();
